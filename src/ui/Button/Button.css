@@ -1,0 +1,25 @@
+button {
+    background: #FF8B37;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    color: #ffffff;
+    font-size: 1.25em;
+    line-height: 116%;
+    font-weight: 600;
+    width: 296px;
+    transition: background ease-in-out .25s;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #FFAC70;
+}
+
+button:focus {
+    background: #E87928;
+}
+
+button a {
+    padding: 21px 24px 20px;
+}

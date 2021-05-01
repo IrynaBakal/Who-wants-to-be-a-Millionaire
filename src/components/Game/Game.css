@@ -1,0 +1,225 @@
+.game-container {
+    display: flex;
+    height: 100%;
+}
+
+.quiz-area {
+    background: #F5F5F7;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 0 8.8em 0 5em;
+    width: 73%;
+}
+
+.quiz-question {
+    max-width: 60%;
+}
+
+.quiz-question p {
+    font-size: 2em;
+    line-height: 116%;
+    font-weight: 600;
+}
+
+.quiz-answers {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2em;
+    counter-reset: count;
+}
+
+.quiz-answer {
+    counter-increment: count;
+    position: relative;
+    cursor: pointer;
+}
+
+.quiz-answer:before,
+.quiz-answer:after{
+    content: '';
+    background: #D0D0D8;
+    width: 1em;
+    height: 1px;
+    position: absolute;
+    top: calc(50% - 1px/2);
+}
+
+.quiz-answer:before {
+    left: -1em;
+}
+
+.quiz-answer:after {
+    right: -1em;
+}
+
+.quiz-answer span {
+    display: block;
+    position: relative;
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: 116%;
+    color: #000000;
+}
+
+.quiz-answer span:before {
+    content: counter(count, upper-alpha);
+    color: #FF8B37;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.hex {
+    position: relative;
+    height: 4.5em;
+    min-width: 100px;
+    font-weight: bold;
+    text-align: center;
+    background: #D0D0D8;
+    -webkit-clip-path: polygon(1.13em 0px, calc(100% - 1.13em) 0px, 100% 50%, calc(100% - 1.13em) 100%, 1.13em 100%, 0px 50%);
+    display: flex;
+    align-items: center;
+    padding-left: 2em;
+    color: #fff;
+}
+
+.hex:before {
+    position: absolute;
+    content: '';
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    left: 1px;
+    top: 1px;
+    -webkit-clip-path: polygon(1.13em 0px, calc(100% - 1.13em) 0px, 100% 50%, calc(100% - 1.13em) 100%, 1.13em 100%, 0px 50%);
+    z-index: -1;
+}
+.hex:before {
+    background: #ffffff;
+}
+
+.progress-area {
+    width: 27%;
+}
+
+.progress-area,
+.winning-amounts {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.winning-amounts {
+    width: 100%;
+}
+
+.winning-amount {
+    position: relative;
+    width: calc(100% - 8.5em);
+    margin-bottom: 0.5em;
+}
+
+.winning-amount:before,
+.winning-amount:after{
+    content: '';
+    background: #D0D0D8;
+    width: 4.25em;
+    height: 1px;
+    position: absolute;
+    top: calc(50% - 1px/2);
+}
+
+.winning-amount:before {
+    left: -4.25em;
+}
+
+.winning-amount:after {
+    right: -4.25em;
+}
+
+.winning-amount span {
+    display: block;
+    position: relative;
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: 116%;
+    color: #000000;
+    text-align: center;
+}
+
+.winning-amount .hex {
+    padding-left: 0;
+    justify-content: center;
+    height: 2.5em;
+}
+
+/* Hover --- quiz-answer */
+.quiz-answer:hover:before,
+.quiz-answer:hover:after{
+    background: #FF8B37;
+}
+.quiz-answer:hover .hex{
+    background: #FF8B37;
+}
+
+/* Correct --- quiz-answer */
+.quiz-answer.correct:before,
+.quiz-answer.correct:after{
+    background: #47D867;
+}
+.quiz-answer.correct .hex{
+    background: #47D867;
+}
+.quiz-answer.correct .hex:before {
+    background: #E6FAEA;
+}
+
+/* Wrong --- quiz-answer */
+.quiz-answer.wrong:before,
+.quiz-answer.wrong:after{
+    background: #EC6259;
+}
+.quiz-answer.wrong .hex{
+    background: #EC6259;
+}
+.quiz-answer.wrong .hex:before {
+    background: #FDEEED;
+}
+
+/* Selected --- quiz-answer */
+.quiz-answer.selected:before,
+.quiz-answer.selected:after{
+    background: #FF8B37;
+}
+.quiz-answer.selected .hex{
+    background: #FF8B37;
+}
+.quiz-answer.selected .hex:before {
+    background: #FFF3EB;
+}
+
+
+/* WINNING SCORE'S STATUSES */
+/* Current win amount */
+.winning-amount.winned span{
+    color: #FF8B37;
+}
+.winning-amount.winned:before,
+.winning-amount.winned:after{
+    background: #FF8B37;
+}
+.winning-amount.winned .hex{
+    background: #FF8B37;
+}
+
+/* Previous win amount */
+.winning-amount.prev-winned span{
+    color: #D0D0D8;
+}
+.winning-amount.prev-winned:before,
+.winning-amount.prev-winned:after{
+    background: #D0D0D8;
+}
+.winning-amount.prev-winned .hex{
+    background: #D0D0D8;
+}
