@@ -1,11 +1,11 @@
-.home-container {
+.logo-screen-container {
     display: flex;
     height: 100%;
     justify-content: center;
     align-items: center;
 }
 
-.home-container:after {
+.logo-screen-container.with-bg:after {
     content: ' ';
     border-bottom: 100vh solid #FFF3EB;
     border-left: 100vw solid transparent;
@@ -16,13 +16,18 @@
     bottom: 0;
 }
 
-.home-title {
-    font-size: 56px; /* 32px mobile */
+.logo-screen-title {
     font-size: 3.5em;
     line-height: 116%;
     font-weight: 600;
     margin: 0;
     margin-bottom: 64px;
+}
+
+.logo-screen-subtitle {
+    font-size: 2em;
+    line-height: 116%;
+    color: rgba(28, 28, 33, .5);
 }
 
 .logo-container {
@@ -40,20 +45,24 @@
         width: 25%;
         margin-right: 3%;
     }
-    .home-logo {
+    .logo-screen-logo {
         width: 100%;
     }
 }
 
 
 @media screen and (max-width: 1000px) {
-    .home-container {
+    .logo-screen-container {
         flex-direction: column;
         padding: 80px 16px 48px;
         justify-content: space-between;
     }
-    .home-title {
+    .logo-screen-title {
         margin-bottom: 0;
+        text-align: center;
+    }
+    .logo-screen-subtitle {
+        margin-bottom: 0.5em;
         text-align: center;
     }
     .content-column button {
@@ -71,7 +80,7 @@
     .logo-container {
         max-width: 96%;
     }
-    .home-logo {
+    .logo-screen-logo {
         width: 100%;
     }
 }

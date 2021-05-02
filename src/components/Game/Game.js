@@ -1,6 +1,7 @@
 import './Game.css';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import {SCORE_SCREEN} from "../../constants/screens";
 
 const config = {
     quizConfig: [
@@ -154,7 +155,7 @@ const Game = props => {
         } else {
             setOptionStatus('wrong');
             setTimeout(() => {
-                history.push('score');
+                history.push({ pathname: SCORE_SCREEN, state: formatCurrency(config.winnigAmounts[currentScore])});
             }, 1000);
         }
     };

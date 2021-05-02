@@ -1,17 +1,17 @@
-// import './Score.css';
+import HandLogo from './../../assets/hand.svg';
+import LogoScreen from '../../ui/LogoScreen/LogoScreen';
+import { GAME_SCREEN } from '../../constants/screens';
 
-import {Link} from 'react-router-dom';
-import Button from '../../ui/Button/Button';
-
-const Score = props => {
-
+const Score = (props) => {
     return (
-        <div>
-            <p>
-                Score !!!
-            </p>
-            <Button><Link to='/game'>Try again</Link></Button>
-        </div>
+        <LogoScreen
+            logoSRC={HandLogo}
+            title={`${props?.location?.state} earned`}
+            subtitle={'Total score:'}
+            redirectURL={GAME_SCREEN}
+            buttonText={'Try again'}
+            hasButton
+        />
     );
 };
 

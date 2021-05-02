@@ -1,13 +1,18 @@
-// import './Greeting.css';
+import RichManLogo from './../../assets/rich-man.svg';
+import LogoScreen from '../../ui/LogoScreen/LogoScreen';
 
-const Greeting = props => {
+const Title = () => {
+    return (<>Welcome to the ranks<br/>
+                of <span className='text-uppercase'>rich people</span>,<br/>
+                new millionaire!!!</>);
+};
 
+const Greeting = () => {
     return (
-        <div>
-            <p>
-                Greeting !!! You're millionaire!!!
-            </p>
-        </div>
+        <LogoScreen
+            logoSRC={RichManLogo}
+            title={<Title/>}
+        />
     );
 };
 
