@@ -1,0 +1,81 @@
+.modal-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: #F5F5F7;
+    padding: 2em 0 3em;
+    z-index: 1000;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.close-container {
+    margin-right: 2.5em;
+    align-self: flex-end;
+}
+
+.header-with-close {
+    text-align: right;
+}
+
+@media screen and (max-width: 768px) {
+    .modal-container {
+        justify-content: center;
+        padding-top: 4.5em;
+    }
+    .header-with-close {
+        position: absolute;
+        top: 2em;
+        right: 2.5em;
+        width: 2em;
+    }
+    .quiz-answers {
+        margin: 0 -1.5em;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .quiz-answers {
+        grid-template-columns: repeat(1, auto);
+    }
+    .hex {
+        height: 5em;
+    }
+    .quiz-answer:before, .quiz-answer:after {
+        width: 1.5em;
+    }
+    .quiz-answer:before {
+        left: -1.5em;
+    }
+    .quiz-answer:after {
+        right: -1.5em;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .hex {
+        height: 5.6em;
+    }
+    .quiz-answer:before, .quiz-answer:after {
+        width: 1.7em;
+    }
+    .quiz-answer:before {
+        left: -1.7em;
+    }
+    .quiz-answer:after {
+        right: -1.7em;
+    }
+    .quiz-question p {
+        font-size: 1.8em;
+    }
+    .quiz-answer span,
+    .winning-amount span {
+        font-size: 1.4em;
+    }
+    .winning-amount {
+        margin-bottom: 0.8em;
+    }
+}

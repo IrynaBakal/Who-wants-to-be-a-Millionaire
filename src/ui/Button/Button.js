@@ -7,6 +7,7 @@ const Button = props => {
 
     return (
         <button
+            className='action-button'
             onClick={onClick}
             {...props}
         >

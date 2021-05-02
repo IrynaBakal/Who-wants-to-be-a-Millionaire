@@ -29,46 +29,6 @@
     counter-reset: count;
 }
 
-.quiz-answer {
-    counter-increment: count;
-    position: relative;
-    cursor: pointer;
-}
-
-.quiz-answer:before,
-.quiz-answer:after{
-    content: '';
-    background: #D0D0D8;
-    width: 1em;
-    height: 1px;
-    position: absolute;
-    top: calc(50% - 1px/2);
-}
-
-.quiz-answer:before {
-    left: -1em;
-}
-
-.quiz-answer:after {
-    right: -1em;
-}
-
-.quiz-answer span {
-    display: block;
-    position: relative;
-    font-weight: 400;
-    font-size: 1.25em;
-    line-height: 116%;
-    color: #000000;
-}
-
-.quiz-answer span:before {
-    content: counter(count, upper-alpha);
-    color: #FF8B37;
-    font-weight: 600;
-    margin-right: 8px;
-}
-
 .hex {
     position: relative;
     height: 4.5em;
@@ -153,51 +113,6 @@
     height: 2.5em;
 }
 
-/* Hover --- quiz-answer */
-.quiz-answer:hover:before,
-.quiz-answer:hover:after{
-    background: #FF8B37;
-}
-.quiz-answer:hover .hex{
-    background: #FF8B37;
-}
-
-/* Correct --- quiz-answer */
-.quiz-answer.correct:before,
-.quiz-answer.correct:after{
-    background: #47D867;
-}
-.quiz-answer.correct .hex{
-    background: #47D867;
-}
-.quiz-answer.correct .hex:before {
-    background: #E6FAEA;
-}
-
-/* Wrong --- quiz-answer */
-.quiz-answer.wrong:before,
-.quiz-answer.wrong:after{
-    background: #EC6259;
-}
-.quiz-answer.wrong .hex{
-    background: #EC6259;
-}
-.quiz-answer.wrong .hex:before {
-    background: #FDEEED;
-}
-
-/* Selected --- quiz-answer */
-.quiz-answer.selected:before,
-.quiz-answer.selected:after{
-    background: #FF8B37;
-}
-.quiz-answer.selected .hex{
-    background: #FF8B37;
-}
-.quiz-answer.selected .hex:before {
-    background: #FFF3EB;
-}
-
 
 /* WINNING SCORE'S STATUSES */
 /* Current win amount */
@@ -222,4 +137,73 @@
 }
 .winning-amount.prev-winned .hex{
     background: #D0D0D8;
+}
+
+.mobile-menu {
+    display: none;
+    align-self: flex-end;
+}
+
+img[class^='mobile-logo-'] {
+    width: 2em;
+    height: 1.75em;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1500px) {
+    .quiz-question {
+        max-width: 100%;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    .quiz-area {
+        padding: 0 6.6em 0 3.75em;
+        width: 70%;
+    }
+    .progress-area {
+        width: 30%;
+    }
+    .winning-amount {
+        width: calc(100% - 8em);
+    }
+    .winning-amount:before, .winning-amount:after {
+        width: 4em;
+    }
+    .winning-amount:before {
+        left: -4em;
+    }
+    .winning-amount:after {
+        right: -4em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .mobile-menu {
+        display: block;
+    }
+    .progress-area {
+        display: none;
+    }
+    .quiz-area {
+        width: 100%;
+        padding: 2em 2.5em 3.5em;
+        justify-content: space-between;
+    }
+    .winning-amount {
+        margin-bottom: 1em;
+    }
+    .winning-amount:last-child {
+        margin-bottom: 0;
+    }
+    .quiz-question p {
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .winning-amount .hex {
+        height: 32px;
+
+    }
 }

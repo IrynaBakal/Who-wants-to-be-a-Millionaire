@@ -1,0 +1,112 @@
+.polygon-item {
+    counter-increment: count;
+    position: relative;
+    cursor: pointer;
+}
+
+.polygon-item:before,
+.polygon-item:after{
+    content: '';
+    background: #D0D0D8;
+    width: 1em;
+    height: 1px;
+    position: absolute;
+    top: calc(50% - 1px/2);
+}
+
+.polygon-item:before {
+    left: -1em;
+}
+
+.polygon-item:after {
+    right: -1em;
+}
+
+.polygon-item span {
+    display: block;
+    position: relative;
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: 116%;
+    color: #000000;
+}
+
+.polygon-item span:before {
+    content: counter(count, upper-alpha);
+    color: #FF8B37;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+.hex {
+    position: relative;
+    height: 4.5em;
+    min-width: 100px;
+    font-weight: bold;
+    text-align: center;
+    background: #D0D0D8;
+    -webkit-clip-path: polygon(1.13em 0px, calc(100% - 1.13em) 0px, 100% 50%, calc(100% - 1.13em) 100%, 1.13em 100%, 0px 50%);
+    display: flex;
+    align-items: center;
+    padding-left: 2em;
+    color: #fff;
+}
+
+.hex:before {
+    position: absolute;
+    content: '';
+    height: calc(100% - 2px);
+    width: calc(100% - 2px);
+    left: 1px;
+    top: 1px;
+    -webkit-clip-path: polygon(1.13em 0px, calc(100% - 1.13em) 0px, 100% 50%, calc(100% - 1.13em) 100%, 1.13em 100%, 0px 50%);
+    z-index: -1;
+}
+.hex:before {
+    background: #ffffff;
+}
+
+/* Hover --- quiz-answer */
+.polygon-item:hover:before,
+.polygon-item:hover:after{
+    background: #FF8B37;
+}
+.polygon-item:hover .hex{
+    background: #FF8B37;
+}
+
+/* Correct --- quiz-answer */
+.polygon-item.correct:before,
+.polygon-item.correct:after{
+    background: #47D867;
+}
+.polygon-item.correct .hex{
+    background: #47D867;
+}
+.polygon-item.correct .hex:before {
+    background: #E6FAEA;
+}
+
+/* Wrong --- quiz-answer */
+.polygon-item.wrong:before,
+.polygon-item.wrong:after{
+    background: #EC6259;
+}
+.polygon-item.wrong .hex{
+    background: #EC6259;
+}
+.polygon-item.wrong .hex:before {
+    background: #FDEEED;
+}
+
+/* Selected --- quiz-answer */
+.polygon-item.selected:before,
+.polygon-item.selected:after{
+    background: #FF8B37;
+}
+.polygon-item.selected .hex{
+    background: #FF8B37;
+}
+.polygon-item.selected .hex:before {
+    background: #FFF3EB;
+}

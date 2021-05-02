@@ -1,4 +1,4 @@
-button {
+.action-button {
     background: #FF8B37;
     outline: none;
     border: none;
@@ -12,14 +12,14 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+.action-button:hover {
     background: #FFAC70;
 }
 
-button:focus {
+.action-button:focus {
     background: #E87928;
 }
 
-button a {
+.action-button a {
     padding: 21px 24px 20px;
 }

@@ -1,7 +1,10 @@
 import './Game.css';
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import {SCORE_SCREEN} from "../../constants/screens";
+import { SCORE_SCREEN } from '../../constants/screens';
+import MenuIcon from './../../assets/menu.svg';
+import Modal from '../../ui/Modal/Modal';
+import PolygonItem from "../../ui/PolygonItem/PolygonItem";
 
 const config = {
     quizConfig: [
@@ -118,7 +121,7 @@ const config = {
 };
 
 
-const Game = props => {
+const Game = () => {
     const history = useHistory();
     const currency = '$';
 
@@ -126,6 +129,7 @@ const Game = props => {
     const [currentScore, setCurrentScore] = useState(null);
     const [selectedQuestion, setSelectedQuestion] = useState(null);
     const [optionStatus, setOptionStatus] = useState('');
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleAnswerButtonClick = (isCorrectAnswer, index) => {
         let iterations = 0;
@@ -134,12 +138,11 @@ const Game = props => {
 
         if (isCorrectAnswer) {
             const nextQuestion = currentQuestion + 1;
-
+            //todo: interval logic to SEPARATE FUNC
             let interval = setInterval(() => {
                 setOptionStatus('correct');
                 setCurrentScore(config.winnigAmounts.length - nextQuestion);
                 iterations++;
-                // console.log('iterations', iterations);
                 if (iterations === 2) {
                     setSelectedQuestion(null);
                     if (nextQuestion < config.quizConfig.length) {
@@ -149,39 +152,49 @@ const Game = props => {
                     }
                 }
                 if (iterations >= 2) {
-                    clearInterval(interval)
+                    clearInterval(interval);
                 }
             }, 1000);
         } else {
-            setOptionStatus('wrong');
-            setTimeout(() => {
-                history.push({ pathname: SCORE_SCREEN, state: formatCurrency(config.winnigAmounts[currentScore])});
+            let iterations = 0;
+            let score = formatCurrency(currentScore ? config.winnigAmounts[currentScore] : 0);
+            let interval = setInterval(() => {
+                iterations++;
+                if (iterations === 1) {
+                    setOptionStatus('wrong');
+                }
+                if (iterations === 2) {
+                    history.push({ pathname: SCORE_SCREEN, state: score});
+                }
+                if (iterations >= 2) {
+                    clearInterval(interval);
+                }
             }, 1000);
         }
     };
 
     const formatCurrency = (amount) => {
-        const formattedAmount = amount.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+        const formattedAmount = amount.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
         return currency + formattedAmount;
     };
 
     return (
         <div className='game-container'>
             <div className='quiz-area'>
+                <div className='mobile-menu' onClick={() => setIsOpen(true)}>
+                    <img className='mobile-logo-menu' src={MenuIcon} alt='menu logo' />
+                </div>
                 <div className='quiz-question'><p>{config.quizConfig[currentQuestion].questionText}</p></div>
                 <ul className='quiz-answers'>
                     {
                         config.quizConfig[currentQuestion].answerOptions.map((answerOption, answerIndex) => {
                             return (
-                                <li
-                                    className={`quiz-answer ${selectedQuestion === answerIndex ? optionStatus : ''}`}
-                                    onClick={() => handleAnswerButtonClick(answerOption.isCorrect, answerIndex)}
-                                    key={answerOption.answerText} /* todo: must be get from be side */
-                                >
-                                    <div className='hex'>
-                                        <span>{answerOption.answerText}</span>
-                                    </div>
-                                </li>
+                                <PolygonItem
+                                    key={answerOption.answerText}
+                                    className={`polygon-item ${selectedQuestion === answerIndex ? optionStatus : ''}`}
+                                    onClickHandler={() => handleAnswerButtonClick(answerOption.isCorrect, answerIndex)}
+                                    polygonText={answerOption.answerText}
+                                />
                             );
                         })
                     }
@@ -205,6 +218,25 @@ const Game = props => {
                     }
                 </ul>
             </div>
+
+            <Modal open={isOpen} onClose={() => setIsOpen(false)}>
+                <ul className='winning-amounts'>
+                    {
+                        config.winnigAmounts.map((winningAmount, scoreIndex) => {
+                            return (
+                                <li className={`winning-amount 
+                                    ${currentScore === scoreIndex ? 'winned' : ''}
+                                    ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
+                                    `} key={winningAmount}>
+                                    <div className='hex'>
+                                        <span>{formatCurrency(winningAmount)}</span>
+                                    </div>
+                                </li>
+                            )
+                        })
+                    }
+                </ul>
+            </Modal>
         </div>
     );
 };

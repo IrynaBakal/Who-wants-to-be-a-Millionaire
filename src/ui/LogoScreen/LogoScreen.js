@@ -16,7 +16,7 @@ const LogoScreen = props => {
     return (
         <div className={`logo-screen-container ${hasBg ? 'with-bg' : ''}`}>
             <div className='logo-container'>
-                <img className='logo-screen-logo' src={logoSRC} alt='hand logo' />
+                <img className='logo-screen-logo' src={logoSRC} alt='screen logo' />
             </div>
             <div className='content-column'>
                 { subtitle && <p className='logo-screen-subtitle'>{props?.subtitle}</p> }

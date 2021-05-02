@@ -6,14 +6,14 @@ import Score from './components/Score/Score';
 import Greeting from './components/Greeting/Greeting';
 
 function App() {
-  return (
-      <BrowserRouter>
-          <Route path="/" exact component={Home} />
-          <Route path="/game" component={Game} />
-          <Route path="/score" component={Score} />
-          <Route path="/greeting" component={Greeting} />
-      </BrowserRouter>
-  );
+    return (
+        <BrowserRouter>
+            <Route path='/' exact component={Home} />
+            <Route path='/game' component={Game} />
+            <Route path='/score' component={Score} />
+            <Route path='/greeting' component={Greeting} />
+        </BrowserRouter>
+    );
 }
 
 export default App;
