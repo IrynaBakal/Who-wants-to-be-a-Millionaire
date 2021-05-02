@@ -3,6 +3,12 @@
     height: 100%;
 }
 
+.game-container.loading {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 .quiz-area {
     background: #F5F5F7;
     display: flex;
@@ -148,6 +154,30 @@ img[class^='mobile-logo-'] {
     width: 2em;
     height: 1.75em;
 }
+
+.loading-description {
+    font-size: 1.5em;
+    line-height: 116%;
+    font-weight: 600;
+}
+
+.loading-spinner {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    border: 3px solid #D0D0D8;
+    border-top-color: #FF8B37;
+    animation: spinner 0.7s linear infinite;
+    display: block;
+    margin-bottom: 1.5em;
+}
+
+@keyframes spinner {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1500px) {
