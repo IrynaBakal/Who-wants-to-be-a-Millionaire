@@ -131,45 +131,46 @@ const Game = () => {
     const [optionStatus, setOptionStatus] = useState('');
     const [isOpen, setIsOpen] = useState(false);
 
-    const handleAnswerButtonClick = (isCorrectAnswer, index) => {
+    const setCorrectStatus = (nextQuestion) => {
+        setOptionStatus('correct');
+        setCurrentScore(config.winnigAmounts.length - nextQuestion);
+    };
+
+    const handleCorrectAnswer = (nextQuestion) => {
+        setSelectedQuestion(null);
+        if (nextQuestion < config.quizConfig.length) {
+            setCurrentQuestion(nextQuestion);
+        } else {
+            history.push('greeting');
+        }
+    };
+
+    const intervalActions = (firstAction, secondAction) => {
         let iterations = 0;
+        let interval = setInterval(() => {
+            iterations++;
+            if (iterations === 1) {
+                firstAction();
+            }
+            if (iterations === 2) {
+                secondAction();
+            }
+            if (iterations >= 2) {
+                clearInterval(interval);
+            }
+        }, 1000);
+    }
+
+    const handleAnswerButtonClick = (isCorrectAnswer, index) => {
         setSelectedQuestion(index);
         setOptionStatus('selected');
 
         if (isCorrectAnswer) {
             const nextQuestion = currentQuestion + 1;
-            //todo: interval logic to SEPARATE FUNC
-            let interval = setInterval(() => {
-                setOptionStatus('correct');
-                setCurrentScore(config.winnigAmounts.length - nextQuestion);
-                iterations++;
-                if (iterations === 2) {
-                    setSelectedQuestion(null);
-                    if (nextQuestion < config.quizConfig.length) {
-                        setCurrentQuestion(nextQuestion);
-                    } else {
-                        history.push('greeting');
-                    }
-                }
-                if (iterations >= 2) {
-                    clearInterval(interval);
-                }
-            }, 1000);
+            intervalActions(() => setCorrectStatus(nextQuestion), () => handleCorrectAnswer(nextQuestion));
         } else {
-            let iterations = 0;
             let score = formatCurrency(currentScore ? config.winnigAmounts[currentScore] : 0);
-            let interval = setInterval(() => {
-                iterations++;
-                if (iterations === 1) {
-                    setOptionStatus('wrong');
-                }
-                if (iterations === 2) {
-                    history.push({ pathname: SCORE_SCREEN, state: score});
-                }
-                if (iterations >= 2) {
-                    clearInterval(interval);
-                }
-            }, 1000);
+            intervalActions(() => setOptionStatus('wrong'), () => history.push({ pathname: SCORE_SCREEN, state: score}));
         }
     };
 
