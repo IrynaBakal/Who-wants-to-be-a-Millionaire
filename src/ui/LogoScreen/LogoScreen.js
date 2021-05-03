@@ -1,18 +1,19 @@
-import { Link } from 'react-router-dom';
 import { memo } from 'react';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 import Button from '../../ui/Button/Button';
 import './LogoScreen.css';
 
 const LogoScreen = props => {
     const {
-        logoSRC,
-        subtitle,
-        title,
-        hasButton = false,
-        redirectURL,
         buttonText,
         hasBg = false,
+        hasButton = false,
+        logoSRC,
+        redirectURL,
+        subtitle,
+        title,
     } = props;
     return (
         <div className={`logo-screen-container ${hasBg ? 'with-bg' : ''}`}>
@@ -33,6 +34,19 @@ const LogoScreen = props => {
             }
         </div>
     );
+};
+
+LogoScreen.propTypes = {
+    buttonText: PropTypes.string,
+    hasBg: PropTypes.bool,
+    hasButton: PropTypes.bool,
+    logoSRC: PropTypes.string.isRequired,
+    redirectURL: PropTypes.string,
+    subtitle: PropTypes.string,
+    title: PropTypes.oneOfType([
+        PropTypes.element,
+        PropTypes.string,
+    ]),
 };
 
 export default memo(LogoScreen);

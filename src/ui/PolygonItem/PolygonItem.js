@@ -1,4 +1,5 @@
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import './PolygonItem.css';
 
@@ -13,6 +14,12 @@ const PolygonItem = props => {
             </div>
         </li>
     );
+};
+
+PolygonItem.propTypes = {
+    className: PropTypes.string.isRequired,
+    onClickHandler: PropTypes.func,
+    polygonText: PropTypes.string,
 };
 
 export default memo(PolygonItem);
