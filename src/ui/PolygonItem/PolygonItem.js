@@ -18,7 +18,7 @@ const PolygonItem = (props) => {
 PolygonItem.propTypes = {
 	className: PropTypes.string.isRequired,
 	onClickHandler: PropTypes.func,
-	polygonText: PropTypes.string,
+	polygonText: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default memo(PolygonItem);

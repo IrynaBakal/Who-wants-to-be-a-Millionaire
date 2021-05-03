@@ -1,4 +1,4 @@
-import RichManLogo from './../../assets/rich-man.svg';
+import RichManLogo from '../../assets/rich-man.svg';
 import LogoScreen from '../../ui/LogoScreen/LogoScreen';
 
 const Title = () => {

@@ -1,12 +1,13 @@
+import './Game.css';
+
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import './Game.css';
-import MenuIcon from './../../assets/menu.svg';
-import Modal from '../../ui/Modal/Modal';
-import QuizAnswersList from '../QuizAnswersList/QuizAnswersList';
-import WinningAmountsList from '../WinningAmountsList/WinningAmountsList';
+import MenuIcon from '../../assets/menu.svg';
+import QuizAnswersList from '../../components/QuizAnswersList/QuizAnswersList';
+import WinningAmountsList from '../../components/WinningAmountsList/WinningAmountsList';
 import { SCORE_SCREEN } from '../../constants/screens';
+import Modal from '../../ui/Modal/Modal';
 import { getFormattedAmount } from '../../utils/getFormattedAmount';
 
 const Game = () => {

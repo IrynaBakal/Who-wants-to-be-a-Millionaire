@@ -1,6 +1,7 @@
+import './WinningAmountsList.css';
+
 import { memo } from 'react';
 
-import './WinningAmountsList.css';
 import PolygonItem from '../../ui/PolygonItem/PolygonItem';
 import { getFormattedAmount } from '../../utils/getFormattedAmount';
 

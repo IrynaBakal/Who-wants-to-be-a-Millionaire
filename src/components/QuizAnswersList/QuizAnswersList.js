@@ -1,6 +1,7 @@
+import './QuizAnswersList.css';
+
 import { memo } from 'react';
 
-import './QuizAnswersList.css';
 import PolygonItem from '../../ui/PolygonItem/PolygonItem';
 
 const QuizAnswersList = ({

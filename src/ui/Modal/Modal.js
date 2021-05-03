@@ -1,7 +1,8 @@
-import ReactDOM from 'react-dom';
-import { memo } from 'react';
-
 import './Modal.css';
+
+import { memo } from 'react';
+import ReactDOM from 'react-dom';
+
 import CloseIcon from './../../assets/close.svg';
 
 const Modal = ({ children, onClose, open }) => {

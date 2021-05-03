@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-
 import './Button.css';
+
+import PropTypes from 'prop-types';
 
 const Button = (props) => {
 	return <button className='action-button'>{props.children}</button>;

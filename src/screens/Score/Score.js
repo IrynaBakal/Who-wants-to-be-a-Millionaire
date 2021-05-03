@@ -1,8 +1,8 @@
 import { useLocation } from 'react-router-dom';
 
-import HandLogo from './../../assets/hand.svg';
-import LogoScreen from '../../ui/LogoScreen/LogoScreen';
+import HandLogo from '../../assets/hand.svg';
 import { GAME_SCREEN } from '../../constants/screens';
+import LogoScreen from '../../ui/LogoScreen/LogoScreen';
 
 const Score = () => {
 	const location = useLocation();
