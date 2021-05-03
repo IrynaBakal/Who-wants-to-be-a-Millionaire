@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import './PolygonItem.css';
 
 const PolygonItem = props => {
@@ -13,4 +15,4 @@ const PolygonItem = props => {
     );
 };
 
-export default PolygonItem;
+export default memo(PolygonItem);

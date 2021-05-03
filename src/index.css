@@ -41,7 +41,7 @@ ul, li {
 
 @media screen and (min-width: 2000px) {
   body {
-    font-size: 30px; /* TODO */
+    font-size: 30px;
   }
 }
 

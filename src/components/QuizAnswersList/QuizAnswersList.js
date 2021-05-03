@@ -1,7 +1,9 @@
+import { memo } from 'react';
+
 import './QuizAnswersList.css';
 import PolygonItem from '../../ui/PolygonItem/PolygonItem';
 
-const QuizAswersList = ({ answersList, selectedQuestion, onClick, optionStatus }) => {
+const QuizAnswersList = ({ answersList, selectedQuestion, onClick, optionStatus }) => {
     return (
         <ul className='quiz-answers'>
             {
@@ -9,7 +11,7 @@ const QuizAswersList = ({ answersList, selectedQuestion, onClick, optionStatus }
                     return (
                         <PolygonItem
                             key={answerOption.answerText}
-                            className={`polygon-item ${selectedQuestion === answerIndex ? optionStatus : ''}`}
+                            className={`polygon-item polygon-item-answer ${selectedQuestion === answerIndex ? optionStatus : ''}`}
                             onClickHandler={() => onClick(answerOption.isCorrect, answerIndex)}
                             polygonText={answerOption.answerText}
                         />
@@ -20,4 +22,4 @@ const QuizAswersList = ({ answersList, selectedQuestion, onClick, optionStatus }
     );
 };
 
-export default QuizAswersList;
+export default memo(QuizAnswersList);

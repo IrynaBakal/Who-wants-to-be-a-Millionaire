@@ -1,3 +1,5 @@
+import { memo } from 'react';
+
 import './WinningAmountsList.css';
 import PolygonItem from '../../ui/PolygonItem/PolygonItem';
 import { getFormattedAmount } from '../../utils/getFormattedAmount';
@@ -10,10 +12,10 @@ const WinningAmountsList = ({ currency, currentScore, winnigAmounts }) => {
                     return (
                         <PolygonItem
                             key={winningAmount}
-                            className={`polygon-item 
-                                       ${currentScore === scoreIndex ? 'winned' : ''}
-                                   ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
-                               `}
+                            className={`polygon-item polygon-item-amount
+                                        ${currentScore === scoreIndex ? 'winned' : ''}
+                                        ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
+                            `}
                             polygonText={getFormattedAmount(winningAmount, currency)}
                        />
                     )
@@ -23,4 +25,4 @@ const WinningAmountsList = ({ currency, currentScore, winnigAmounts }) => {
     );
 };
 
-export default WinningAmountsList;
+export default memo(WinningAmountsList);

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { memo } from 'react';
 
 import Button from '../../ui/Button/Button';
 import './LogoScreen.css';
@@ -34,4 +35,4 @@ const LogoScreen = props => {
     );
 };
 
-export default LogoScreen;
+export default memo(LogoScreen);

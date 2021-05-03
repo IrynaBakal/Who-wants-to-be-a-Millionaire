@@ -58,11 +58,11 @@
 }
 
 /* specific styles for QUIZ ANSWERS */
-.quiz-answers .polygon-item {
+.polygon-item.polygon-item-answer {
     counter-increment: count;
     cursor: pointer;
 }
-.quiz-answers .polygon-item span:before {
+.polygon-item.polygon-item-answer span:before {
     content: counter(count, upper-alpha);
     color: #FF8B37;
     font-weight: 600;
@@ -70,24 +70,25 @@
 }
 
 /* specific styles for polygon items from SCORE area */
-.winning-amounts .polygon-item {
+.polygon-item.polygon-item-amount {
     width: calc(100% - 8.5em);
     margin-bottom: 0.5em;
 }
 
-.winning-amounts .polygon-item:before, .winning-amounts .polygon-item:after {
+.polygon-item.polygon-item-amount:before,
+.polygon-item.polygon-item-amount:after {
     width: 4.25em;
 }
 
-.winning-amounts .polygon-item:before {
+.polygon-item.polygon-item-amount:before {
     left: -4.25em;
 }
 
-.winning-amounts .polygon-item:after {
+.polygon-item.polygon-item-amount:after {
     right: -4.25em;
 }
 
-.winning-amounts span {
+.polygon-item-amount span {
     display: block;
     position: relative;
     font-weight: 400;
@@ -97,54 +98,54 @@
     text-align: center;
 }
 
-.winning-amounts .hex {
+.polygon-item-amount .hex {
     padding-left: 0;
     justify-content: center;
     height: 2.5em;
 }
 
 /* Hover --- only for QUIZ-ANSWERS */
-.quiz-answers .polygon-item:hover:before,
-.quiz-answers .polygon-item:hover:after{
+.polygon-item.polygon-item-answer:hover:before,
+.polygon-item.polygon-item-answer:hover:after{
     background: #FF8B37;
 }
-.quiz-answers .polygon-item:hover .hex{
+.polygon-item.polygon-item-answer:hover .hex{
     background: #FF8B37;
 }
 
 /* Correct --- only for QUIZ-ANSWERS */
-.quiz-answers .polygon-item.correct:before,
-.quiz-answers .polygon-item.correct:after{
+.polygon-item.polygon-item-answer.correct:before,
+.polygon-item.polygon-item-answer.correct:after{
     background: #47D867;
 }
-.quiz-answers .polygon-item.correct .hex{
+.polygon-item.polygon-item-answer.correct .hex{
     background: #47D867;
 }
-.quiz-answers .polygon-item.correct .hex:before {
+.polygon-item.polygon-item-answer.correct .hex:before {
     background: #E6FAEA;
 }
 
 /* Wrong --- only for QUIZ-ANSWERS */
-.quiz-answers .polygon-item.wrong:before,
-.quiz-answers .polygon-item.wrong:after{
+.polygon-item.polygon-item-answer.wrong:before,
+.polygon-item.polygon-item-answer.wrong:after{
     background: #EC6259;
 }
-.quiz-answers .polygon-item.wrong .hex{
+.polygon-item.polygon-item-answer.wrong .hex{
     background: #EC6259;
 }
-.quiz-answers .polygon-item.wrong .hex:before {
+.polygon-item.polygon-item-answer.wrong .hex:before {
     background: #FDEEED;
 }
 
 /* Selected --- only for QUIZ-ANSWERS */
-.quiz-answers .polygon-item.selected:before,
-.quiz-answers .polygon-item.selected:after{
+.polygon-item.polygon-item-answer.selected:before,
+.polygon-item.polygon-item-answer.selected:after{
     background: #FF8B37;
 }
-.quiz-answers .polygon-item.selected .hex{
+.polygon-item.polygon-item-answer.selected .hex{
     background: #FF8B37;
 }
-.quiz-answers .polygon-item.selected .hex:before {
+.polygon-item.polygon-item-answer.selected .hex:before {
     background: #FFF3EB;
 }
 
@@ -175,32 +176,70 @@
 
 /* MEDIA QUERIES */
 @media screen and (max-width: 1300px) {
-    .winning-amounts .polygon-item {
+    .polygon-item.polygon-item-amount {
         width: calc(100% - 8em);
     }
-    .winning-amounts .polygon-item:before,
-    .winning-amounts .polygon-item:after {
+    .polygon-item.polygon-item-amount:before,
+    .polygon-item.polygon-item-amount:after {
         width: 4em;
     }
-    .winning-amounts .polygon-item:before {
+    .polygon-item.polygon-item-amount:before {
         left: -4em;
     }
-    .winning-amounts .polygon-item:after {
+    .polygon-item.polygon-item-amount:after {
         right: -4em;
     }
 }
 
 @media screen and (max-width: 1000px) {
-    .winning-amounts .polygon-item {
+    .polygon-item.polygon-item-amount {
         margin-bottom: 1em;
     }
-    .winning-amounts .polygon-item:last-child {
+    .polygon-item.polygon-item-amount:last-child {
         margin-bottom: 0;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .winning-amounts .polygon-item .hex {
+    .polygon-item.polygon-item-amount .hex {
         height: 32px;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .polygon-item-answer .hex {
+        height: 5em;
+    }
+    .polygon-item.polygon-item-answer:before,
+    .polygon-item.polygon-item-answer:after {
+        width: 1.5em;
+    }
+    .polygon-item.polygon-item-answer:before {
+        left: -1.5em;
+    }
+    .polygon-item.polygon-item-answer:after {
+        right: -1.5em;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .polygon-item span {
+        font-size: 1.4em;
+    }
+    .polygon-item.polygon-item-amount {
+        margin-bottom: 0.8em;
+    }
+    .polygon-item.polygon-item-answer .hex {
+        height: 5.6em;
+    }
+    .polygon-item.polygon-item-answer:before,
+    .polygon-item.polygon-item-answer:after {
+        width: 1.7em;
+    }
+    .polygon-item.polygon-item-answer:before {
+        left: -1.7em;
+    }
+    .polygon-item.polygon-item-answer:after {
+        right: -1.7em;
     }
 }

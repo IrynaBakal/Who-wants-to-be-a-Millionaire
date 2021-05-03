@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom';
+import { memo } from 'react';
 
 import './Modal.css';
 import CloseIcon from './../../assets/close.svg';
@@ -22,4 +23,4 @@ const Modal = ({ children, onClose, open }) => {
     );
 };
 
-export default Modal;
+export default memo(Modal);

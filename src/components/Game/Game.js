@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import './Game.css';
 import MenuIcon from './../../assets/menu.svg';
 import Modal from '../../ui/Modal/Modal';
-import QuizAswersList from '../QuizAswersList/QuizAswersList';
+import QuizAnswersList from '../QuizAnswersList/QuizAnswersList';
 import WinningAmountsList from '../WinningAmountsList/WinningAmountsList';
 import { SCORE_SCREEN } from '../../constants/screens';
 import { getFormattedAmount } from '../../utils/getFormattedAmount';
@@ -95,7 +95,7 @@ const Game = () => {
                     <img className='mobile-logo-menu' src={MenuIcon} alt='menu logo' />
                 </div>
                 <div className='quiz-question'><p>{data.quizConfig[currentQuestion].questionText}</p></div>
-                <QuizAswersList
+                <QuizAnswersList
                     answersList={data.quizConfig[currentQuestion].answerOptions}
                     selectedQuestion={selectedQuestion}
                     optionStatus={optionStatus}
