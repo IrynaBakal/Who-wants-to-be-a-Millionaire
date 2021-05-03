@@ -2,10 +2,11 @@ import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
 import './Game.css';
-import { SCORE_SCREEN } from '../../constants/screens';
 import MenuIcon from './../../assets/menu.svg';
 import Modal from '../../ui/Modal/Modal';
 import PolygonItem from '../../ui/PolygonItem/PolygonItem';
+import { SCORE_SCREEN } from '../../constants/screens';
+import { getFormattedAmount } from '../../utils/getFormattedAmount';
 
 const Game = () => {
     const history = useHistory();
@@ -36,7 +37,7 @@ const Game = () => {
 
     const setCorrectStatus = (nextQuestion) => {
         setOptionStatus('correct');
-        setCurrentScore(data.winnigAmounts.length - nextQuestion);
+        setCurrentScore(data.winnigAmounts?.length - nextQuestion);
     };
 
     const handleCorrectAnswer = (nextQuestion) => {
@@ -72,14 +73,9 @@ const Game = () => {
             const nextQuestion = currentQuestion + 1;
             intervalActions(() => setCorrectStatus(nextQuestion), () => handleCorrectAnswer(nextQuestion));
         } else {
-            let score = formatCurrency(currentScore ? data.winnigAmounts[currentScore] : 0);
+            let score = getFormattedAmount(currentScore ? data.winnigAmounts[currentScore] : 0, currency);
             intervalActions(() => setOptionStatus('wrong'), () => history.push({ pathname: SCORE_SCREEN, state: score}));
         }
-    };
-
-    const formatCurrency = (amount) => {
-        const formattedAmount = amount.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, '$1,');
-        return currency + formattedAmount;
     };
 
     if (Object.keys(data).length === 0) {
@@ -116,16 +112,16 @@ const Game = () => {
             <div className='progress-area'>
                 <ul className='winning-amounts'>
                     {
-                        data.winnigAmounts.map((winningAmount, scoreIndex) => {
+                        data.winnigAmounts?.map((winningAmount, scoreIndex) => {
                             return (
-                                <li className={`winning-amount 
-                                    ${currentScore === scoreIndex ? 'winned' : ''}
-                                    ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
-                                    `} key={winningAmount}>
-                                    <div className='hex'>
-                                        <span>{formatCurrency(winningAmount)}</span>
-                                    </div>
-                                </li>
+                                <PolygonItem
+                                    key={winningAmount}
+                                    className={`polygon-item 
+                                        ${currentScore === scoreIndex ? 'winned' : ''}
+                                        ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
+                                    `}
+                                    polygonText={getFormattedAmount(winningAmount, currency)}
+                                />
                             )
                         })
                     }
@@ -137,14 +133,14 @@ const Game = () => {
                     {
                         data.winnigAmounts.map((winningAmount, scoreIndex) => {
                             return (
-                                <li className={`winning-amount 
-                                    ${currentScore === scoreIndex ? 'winned' : ''}
-                                    ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
-                                    `} key={winningAmount}>
-                                    <div className='hex'>
-                                        <span>{formatCurrency(winningAmount)}</span>
-                                    </div>
-                                </li>
+                                <PolygonItem
+                                    key={winningAmount}
+                                    className={`polygon-item 
+                                        ${currentScore === scoreIndex ? 'winned' : ''}
+                                        ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
+                                    `}
+                                    polygonText={getFormattedAmount(winningAmount, currency)}
+                                />
                             )
                         })
                     }

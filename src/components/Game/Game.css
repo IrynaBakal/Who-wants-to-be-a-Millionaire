@@ -35,34 +35,6 @@
     counter-reset: count;
 }
 
-.hex {
-    position: relative;
-    height: 4.5em;
-    min-width: 100px;
-    font-weight: bold;
-    text-align: center;
-    background: #D0D0D8;
-    -webkit-clip-path: polygon(1.13em 0px, calc(100% - 1.13em) 0px, 100% 50%, calc(100% - 1.13em) 100%, 1.13em 100%, 0px 50%);
-    display: flex;
-    align-items: center;
-    padding-left: 2em;
-    color: #fff;
-}
-
-.hex:before {
-    position: absolute;
-    content: '';
-    height: calc(100% - 2px);
-    width: calc(100% - 2px);
-    left: 1px;
-    top: 1px;
-    -webkit-clip-path: polygon(1.13em 0px, calc(100% - 1.13em) 0px, 100% 50%, calc(100% - 1.13em) 100%, 1.13em 100%, 0px 50%);
-    z-index: -1;
-}
-.hex:before {
-    background: #ffffff;
-}
-
 .progress-area {
     width: 27%;
 }
@@ -77,72 +49,6 @@
 
 .winning-amounts {
     width: 100%;
-}
-
-.winning-amount {
-    position: relative;
-    width: calc(100% - 8.5em);
-    margin-bottom: 0.5em;
-}
-
-.winning-amount:before,
-.winning-amount:after{
-    content: '';
-    background: #D0D0D8;
-    width: 4.25em;
-    height: 1px;
-    position: absolute;
-    top: calc(50% - 1px/2);
-}
-
-.winning-amount:before {
-    left: -4.25em;
-}
-
-.winning-amount:after {
-    right: -4.25em;
-}
-
-.winning-amount span {
-    display: block;
-    position: relative;
-    font-weight: 400;
-    font-size: 1.25em;
-    line-height: 116%;
-    color: #000000;
-    text-align: center;
-}
-
-.winning-amount .hex {
-    padding-left: 0;
-    justify-content: center;
-    height: 2.5em;
-}
-
-
-/* WINNING SCORE'S STATUSES */
-/* Current win amount */
-.winning-amount.winned span{
-    color: #FF8B37;
-}
-.winning-amount.winned:before,
-.winning-amount.winned:after{
-    background: #FF8B37;
-}
-.winning-amount.winned .hex{
-    background: #FF8B37;
-}
-
-/* Previous win amount */
-.winning-amount.prev-winned span{
-    color: #D0D0D8;
-}
-.winning-amount.prev-winned:before,
-.winning-amount.prev-winned:after{
-    background: #D0D0D8;
-}
-.winning-amount.prev-winned .hex{
-    background: #D0D0D8;
 }
 
 .mobile-menu {
@@ -194,18 +100,6 @@ img[class^='mobile-logo-'] {
     .progress-area {
         width: 30%;
     }
-    .winning-amount {
-        width: calc(100% - 8em);
-    }
-    .winning-amount:before, .winning-amount:after {
-        width: 4em;
-    }
-    .winning-amount:before {
-        left: -4em;
-    }
-    .winning-amount:after {
-        right: -4em;
-    }
 }
 
 @media screen and (max-width: 1000px) {
@@ -220,20 +114,7 @@ img[class^='mobile-logo-'] {
         padding: 2em 2.5em 3.5em;
         justify-content: space-between;
     }
-    .winning-amount {
-        margin-bottom: 1em;
-    }
-    .winning-amount:last-child {
-        margin-bottom: 0;
-    }
     .quiz-question p {
         text-align: center;
-    }
-}
-
-@media screen and (max-width: 768px) {
-    .winning-amount .hex {
-        height: 32px;
-
     }
 }

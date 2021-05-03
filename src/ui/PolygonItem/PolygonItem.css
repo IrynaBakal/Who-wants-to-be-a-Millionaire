@@ -1,7 +1,5 @@
 .polygon-item {
-    counter-increment: count;
     position: relative;
-    cursor: pointer;
 }
 
 .polygon-item:before,
@@ -29,13 +27,6 @@
     font-size: 1.25em;
     line-height: 116%;
     color: #000000;
-}
-
-.polygon-item span:before {
-    content: counter(count, upper-alpha);
-    color: #FF8B37;
-    font-weight: 600;
-    margin-right: 8px;
 }
 
 .hex {
@@ -66,47 +57,150 @@
     background: #ffffff;
 }
 
-/* Hover --- quiz-answer */
-.polygon-item:hover:before,
-.polygon-item:hover:after{
+/* specific styles for QUIZ ANSWERS */
+.quiz-answers .polygon-item {
+    counter-increment: count;
+    cursor: pointer;
+}
+.quiz-answers .polygon-item span:before {
+    content: counter(count, upper-alpha);
+    color: #FF8B37;
+    font-weight: 600;
+    margin-right: 8px;
+}
+
+/* specific styles for polygon items from SCORE area */
+.winning-amounts .polygon-item {
+    width: calc(100% - 8.5em);
+    margin-bottom: 0.5em;
+}
+
+.winning-amounts .polygon-item:before, .winning-amounts .polygon-item:after {
+    width: 4.25em;
+}
+
+.winning-amounts .polygon-item:before {
+    left: -4.25em;
+}
+
+.winning-amounts .polygon-item:after {
+    right: -4.25em;
+}
+
+.winning-amounts span {
+    display: block;
+    position: relative;
+    font-weight: 400;
+    font-size: 1.25em;
+    line-height: 116%;
+    color: #000000;
+    text-align: center;
+}
+
+.winning-amounts .hex {
+    padding-left: 0;
+    justify-content: center;
+    height: 2.5em;
+}
+
+/* Hover --- only for QUIZ-ANSWERS */
+.quiz-answers .polygon-item:hover:before,
+.quiz-answers .polygon-item:hover:after{
     background: #FF8B37;
 }
-.polygon-item:hover .hex{
+.quiz-answers .polygon-item:hover .hex{
     background: #FF8B37;
 }
 
-/* Correct --- quiz-answer */
-.polygon-item.correct:before,
-.polygon-item.correct:after{
+/* Correct --- only for QUIZ-ANSWERS */
+.quiz-answers .polygon-item.correct:before,
+.quiz-answers .polygon-item.correct:after{
     background: #47D867;
 }
-.polygon-item.correct .hex{
+.quiz-answers .polygon-item.correct .hex{
     background: #47D867;
 }
-.polygon-item.correct .hex:before {
+.quiz-answers .polygon-item.correct .hex:before {
     background: #E6FAEA;
 }
 
-/* Wrong --- quiz-answer */
-.polygon-item.wrong:before,
-.polygon-item.wrong:after{
+/* Wrong --- only for QUIZ-ANSWERS */
+.quiz-answers .polygon-item.wrong:before,
+.quiz-answers .polygon-item.wrong:after{
     background: #EC6259;
 }
-.polygon-item.wrong .hex{
+.quiz-answers .polygon-item.wrong .hex{
     background: #EC6259;
 }
-.polygon-item.wrong .hex:before {
+.quiz-answers .polygon-item.wrong .hex:before {
     background: #FDEEED;
 }
 
-/* Selected --- quiz-answer */
-.polygon-item.selected:before,
-.polygon-item.selected:after{
+/* Selected --- only for QUIZ-ANSWERS */
+.quiz-answers .polygon-item.selected:before,
+.quiz-answers .polygon-item.selected:after{
     background: #FF8B37;
 }
-.polygon-item.selected .hex{
+.quiz-answers .polygon-item.selected .hex{
     background: #FF8B37;
 }
-.polygon-item.selected .hex:before {
+.quiz-answers .polygon-item.selected .hex:before {
     background: #FFF3EB;
+}
+
+/* WINNING SCORE'S STATUSES */
+/* Current win amount */
+.polygon-item.winned span{
+    color: #FF8B37;
+}
+.polygon-item.winned:before,
+.polygon-item.winned:after{
+    background: #FF8B37;
+}
+.polygon-item.winned .hex{
+    background: #FF8B37;
+}
+
+/* Previous win amount */
+.polygon-item.prev-winned span{
+    color: #D0D0D8;
+}
+.polygon-item.prev-winned:before,
+.polygon-item.prev-winned:after{
+    background: #D0D0D8;
+}
+.polygon-item.prev-winned .hex{
+    background: #D0D0D8;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 1300px) {
+    .winning-amounts .polygon-item {
+        width: calc(100% - 8em);
+    }
+    .winning-amounts .polygon-item:before,
+    .winning-amounts .polygon-item:after {
+        width: 4em;
+    }
+    .winning-amounts .polygon-item:before {
+        left: -4em;
+    }
+    .winning-amounts .polygon-item:after {
+        right: -4em;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .winning-amounts .polygon-item {
+        margin-bottom: 1em;
+    }
+    .winning-amounts .polygon-item:last-child {
+        margin-bottom: 0;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .winning-amounts .polygon-item .hex {
+        height: 32px;
+    }
 }
