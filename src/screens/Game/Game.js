@@ -9,6 +9,11 @@ import WinningAmountsList from '../../components/WinningAmountsList/WinningAmoun
 import { SCORE_SCREEN } from '../../constants/screens';
 import Modal from '../../ui/Modal/Modal';
 import { getFormattedAmount } from '../../utils/getFormattedAmount';
+import {
+	CORRECT_ANSWER,
+	SELECTED_ANSWER,
+	WRONG_ANSWER,
+} from '../../constants/answerStatuses';
 
 const Game = () => {
 	const history = useHistory();
@@ -17,7 +22,7 @@ const Game = () => {
 	const [currentQuestion, setCurrentQuestion] = useState(0);
 	const [currentScore, setCurrentScore] = useState(null);
 	const [selectedQuestion, setSelectedQuestion] = useState(null);
-	const [optionStatus, setOptionStatus] = useState('');
+	const [answerStatus, setAnswerStatus] = useState('');
 	const [isOpen, setIsOpen] = useState(false);
 
 	const [data, setData] = useState({});
@@ -37,7 +42,7 @@ const Game = () => {
 	}, []);
 
 	const setCorrectStatus = (nextQuestion) => {
-		setOptionStatus('correct');
+		setAnswerStatus(CORRECT_ANSWER);
 		setCurrentScore(data.winnigAmounts?.length - nextQuestion);
 	};
 
@@ -68,7 +73,7 @@ const Game = () => {
 
 	const handleAnswerButtonClick = (isCorrectAnswer, index) => {
 		setSelectedQuestion(index);
-		setOptionStatus('selected');
+		setAnswerStatus(SELECTED_ANSWER);
 
 		if (isCorrectAnswer) {
 			const nextQuestion = currentQuestion + 1;
@@ -82,7 +87,7 @@ const Game = () => {
 				currency
 			);
 			intervalActions(
-				() => setOptionStatus('wrong'),
+				() => setAnswerStatus(WRONG_ANSWER),
 				() => history.push({ pathname: SCORE_SCREEN, state: score })
 			);
 		}
@@ -109,7 +114,7 @@ const Game = () => {
 				<QuizAnswersList
 					answersList={data.quizConfig[currentQuestion].answerOptions}
 					selectedQuestion={selectedQuestion}
-					optionStatus={optionStatus}
+					answerStatus={answerStatus}
 					onClick={handleAnswerButtonClick}
 				/>
 			</div>
