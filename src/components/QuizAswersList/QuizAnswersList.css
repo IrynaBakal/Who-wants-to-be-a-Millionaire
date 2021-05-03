@@ -1,0 +1,18 @@
+.quiz-answers {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 2em;
+    counter-reset: count;
+}
+
+@media screen and (max-width: 768px) {
+    .quiz-answers {
+        margin: 0 -1.5em;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .quiz-answers {
+        grid-template-columns: repeat(1, auto);
+    }
+}

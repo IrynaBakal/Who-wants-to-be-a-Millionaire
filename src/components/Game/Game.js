@@ -4,7 +4,8 @@ import { useHistory } from 'react-router-dom';
 import './Game.css';
 import MenuIcon from './../../assets/menu.svg';
 import Modal from '../../ui/Modal/Modal';
-import PolygonItem from '../../ui/PolygonItem/PolygonItem';
+import QuizAswersList from '../QuizAswersList/QuizAswersList';
+import WinningAmountsList from '../WinningAmountsList/WinningAmountsList';
 import { SCORE_SCREEN } from '../../constants/screens';
 import { getFormattedAmount } from '../../utils/getFormattedAmount';
 
@@ -94,57 +95,27 @@ const Game = () => {
                     <img className='mobile-logo-menu' src={MenuIcon} alt='menu logo' />
                 </div>
                 <div className='quiz-question'><p>{data.quizConfig[currentQuestion].questionText}</p></div>
-                <ul className='quiz-answers'>
-                    {
-                        data.quizConfig[currentQuestion].answerOptions.map((answerOption, answerIndex) => {
-                            return (
-                                <PolygonItem
-                                    key={answerOption.answerText}
-                                    className={`polygon-item ${selectedQuestion === answerIndex ? optionStatus : ''}`}
-                                    onClickHandler={() => handleAnswerButtonClick(answerOption.isCorrect, answerIndex)}
-                                    polygonText={answerOption.answerText}
-                                />
-                            );
-                        })
-                    }
-                </ul>
+                <QuizAswersList
+                    answersList={data.quizConfig[currentQuestion].answerOptions}
+                    selectedQuestion={selectedQuestion}
+                    optionStatus={optionStatus}
+                    onClick={handleAnswerButtonClick}
+                />
             </div>
             <div className='progress-area'>
-                <ul className='winning-amounts'>
-                    {
-                        data.winnigAmounts?.map((winningAmount, scoreIndex) => {
-                            return (
-                                <PolygonItem
-                                    key={winningAmount}
-                                    className={`polygon-item 
-                                        ${currentScore === scoreIndex ? 'winned' : ''}
-                                        ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
-                                    `}
-                                    polygonText={getFormattedAmount(winningAmount, currency)}
-                                />
-                            )
-                        })
-                    }
-                </ul>
+                <WinningAmountsList
+                    winnigAmounts={data.winnigAmounts}
+                    currency={currency}
+                    currentScore={currentScore}
+                />
             </div>
 
             <Modal open={isOpen} onClose={() => setIsOpen(false)}>
-                <ul className='winning-amounts'>
-                    {
-                        data.winnigAmounts.map((winningAmount, scoreIndex) => {
-                            return (
-                                <PolygonItem
-                                    key={winningAmount}
-                                    className={`polygon-item 
-                                        ${currentScore === scoreIndex ? 'winned' : ''}
-                                        ${currentScore && currentScore < scoreIndex ? 'prev-winned' : ''}
-                                    `}
-                                    polygonText={getFormattedAmount(winningAmount, currency)}
-                                />
-                            )
-                        })
-                    }
-                </ul>
+                <WinningAmountsList
+                    winnigAmounts={data.winnigAmounts}
+                    currency={currency}
+                    currentScore={currentScore}
+                />
             </Modal>
         </div>
     );

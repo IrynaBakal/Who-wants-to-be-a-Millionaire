@@ -32,15 +32,9 @@
         right: 2.5em;
         width: 2em;
     }
-    .quiz-answers {
-        margin: 0 -1.5em;
-    }
 }
 
-@media screen and (max-width: 425px) {
-    .quiz-answers {
-        grid-template-columns: repeat(1, auto);
-    }
+@media screen and (max-width: 425px) {/*todo: move and test it for polygonItems  */
     .hex {
         height: 5em;
     }
@@ -55,7 +49,7 @@
     }
 }
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 350px) {/*todo: move and test it for polygonItems  */
     .hex {
         height: 5.6em;
     }

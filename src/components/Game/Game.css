@@ -28,27 +28,15 @@
     font-weight: 600;
 }
 
-.quiz-answers {
-    display: grid;
-    grid-template-columns: repeat(2, auto);
-    gap: 2em;
-    counter-reset: count;
-}
-
 .progress-area {
     width: 27%;
 }
 
-.progress-area,
-.winning-amounts {
+.progress-area {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-}
-
-.winning-amounts {
-    width: 100%;
 }
 
 .mobile-menu {
