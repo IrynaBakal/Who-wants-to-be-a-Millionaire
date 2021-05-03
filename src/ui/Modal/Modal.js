@@ -2,6 +2,7 @@ import './Modal.css';
 
 import { memo } from 'react';
 import ReactDOM from 'react-dom';
+import PropTypes from 'prop-types';
 
 import CloseIcon from './../../assets/close.svg';
 
@@ -26,6 +27,12 @@ const Modal = ({ children, onClose, open }) => {
 		</>,
 		document.getElementById('portal')
 	);
+};
+
+Modal.propTypes = {
+	children: PropTypes.node,
+	onClose: PropTypes.func.isRequired,
+	open: PropTypes.bool.isRequired,
 };
 
 export default memo(Modal);

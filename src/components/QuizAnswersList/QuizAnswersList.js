@@ -1,6 +1,7 @@
 import './QuizAnswersList.css';
 
 import { memo } from 'react';
+import PropTypes from 'prop-types';
 
 import PolygonItem from '../../ui/PolygonItem/PolygonItem';
 
@@ -26,6 +27,16 @@ const QuizAnswersList = ({
 			})}
 		</ul>
 	);
+};
+
+QuizAnswersList.propTypes = {
+	answersList: PropTypes.array,
+	selectedQuestion: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.oneOf([null]),
+	]),
+	onClick: PropTypes.func.isRequired,
+	optionStatus: PropTypes.string,
 };
 
 export default memo(QuizAnswersList);
