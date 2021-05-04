@@ -1,4 +1,4 @@
-import { BrowserRouter, Route } from 'react-router-dom';
+import { HashRouter, Route } from 'react-router-dom';
 
 import Game from './screens/Game/Game';
 import Greeting from './screens/Greeting/Greeting';
@@ -7,12 +7,12 @@ import Score from './screens/Score/Score';
 
 function App() {
 	return (
-		<BrowserRouter>
+		<HashRouter basename={process.env.PUBLIC_URL}>
 			<Route path='/' exact component={Home} />
-			<Route path='/game' component={Game} />
-			<Route path='/score' component={Score} />
-			<Route path='/greeting' component={Greeting} />
-		</BrowserRouter>
+			<Route path='/game' exact component={Game} />
+			<Route path='/score' exact component={Score} />
+			<Route path='/greeting' exact component={Greeting} />
+		</HashRouter>
 	);
 }
 
